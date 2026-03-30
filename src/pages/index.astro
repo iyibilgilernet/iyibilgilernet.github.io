@@ -41,17 +41,17 @@
 			}
 			body { margin: 0; padding: 0; }
 			main {
-				margin: auto;
-				padding: 2rem;
-				width: 800px;
-				max-width: calc(100% - 2rem);
-				text-align: center;
-			}
+    margin: auto;
+    padding: 2rem 1rem;
+    width: 100%; /* Sabit genişlik yerine tam ekran yapalım */
+    max-width: 800px; /* Ama çok da yayılmasın */
+    box-sizing: border-box;
+}
 			h1 {
-				font-size: 2.2rem; /* Boyutu daha da kibarlaştırdık */
-				font-weight: 800;
-				margin: 0;
-			}
+    font-size: clamp(1.5rem, 5vw, 2.2rem); /* Ekran küçüldükçe yazı da küçülür */
+    word-wrap: break-word;
+    white-space: normal; /* Harflerin alta kaymasını engeller, kelimeyi bütün tutar */
+}
 			.text-gradient {
 				background-image: var(--accent-gradient);
 				-webkit-background-clip: text;
