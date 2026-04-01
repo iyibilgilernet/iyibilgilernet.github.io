@@ -1,25 +1,76 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<Layout
-	title="iyibilgilernet | Hayatın Esintisi"
-	description="Faydalı bilgiler, yemek tarifleri ve yaşam rehberi."
-	pubDate={new Date('April 01 2026')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<h1 class="text-3xl font-bold text-orange-600">Hoş Geldiniz!</h1>
-	<p>
-		<strong>iyibilgilernet</strong> platformu olarak, size en pratik bilgileri ve 
-		en lezzetli tarifleri sunmak için buradayız.
-	</p>
-	
-	<div class="bg-slate-100 p-6 rounded-xl my-8 border-l-4 border-orange-500">
-		<h2 class="text-xl font-semibold">Son Videolarımız</h2>
-		<p>YouTube kanalımızdaki en yeni içeriklere buradan ulaşabilirsiniz.</p>
-		</div>
+<!doctype html>
+<html lang="tr">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 960px;
+				margin: auto;
+				padding: 3em 1em;
+			}
+			.video-vitrini {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+				margin-bottom: 3rem;
+			}
+			@media (max-width: 720px) {
+				.video-vitrini {
+					grid-template-columns: 1fr;
+				}
+			}
+			.video-kart {
+				background: white;
+				padding: 1rem;
+				border-radius: 1rem;
+				box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+				border-top: 5px solid #ea580c;
+			}
+			iframe {
+				width: 100%;
+				aspect-ratio: 16 / 9;
+				border-radius: 0.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="video-vitrini">
+				<div class="video-kart">
+					<h3 style="margin-bottom: 10px;">🔥 Nefis Kestane Kebap</h3>
+					<iframe 
+						src="https://www.youtube.com/embed/VİDEO_ID_BURAYA" 
+						title="Kestane Pişirme" 
+						frameborder="0" 
+						allowfullscreen>
+					</iframe>
+				</div>
 
-	<p>
-		İçeriklerimizi kaçırmamak için bizi sosyal medya hesaplarımızdan takip etmeyi unutmayın!
-	</p>
-</Layout>
+				<div class="video-kart">
+					<h3 style="margin-bottom: 10px;">🍚 Tane Tane Pirinç Pilavı</h3>
+					<iframe 
+						src="https://www.youtube.com/embed/ZuRrZ1Q-f3I" 
+						title="Pirinç Pilavı Tarifi" 
+						frameborder="0" 
+						allowfullscreen>
+					</iframe>
+				</div>
+			</section>
+
+			<article class="prose">
+				<h1>Hoş Geldiniz!</h1>
+				<p><strong>iyibilgilernet</strong> platformunda en pratik bilgiler ve en lezzetli tarifler sizi bekliyor.</p>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
